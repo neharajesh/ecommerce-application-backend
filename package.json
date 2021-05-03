@@ -1,0 +1,31 @@
+{
+    "name": "ecommerce-application-backend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "dependencies": {
+      "body-parser": "^1.19.0",
+      "cors": "^2.8.5",
+      "express": "^4.17.1",
+      "lodash": "^4.17.21",
+      "mongoose": "^5.12.4",
+      "mongoose-type-url": "^2.1.0",
+      "nodemon": "^2.0.7"
+    },
+    "devDependencies": {},
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/neharajesh/ecommerce-application-backend.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/neharajesh/ecommerce-application-backend/issues"
+    },
+    "homepage": "https://github.com/neharajesh/ecommerce-application-backend#readme"
+  }
+  

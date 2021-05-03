@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const lodash = require("lodash")
 const {extend} = lodash
 
-const { Category } = require("../models/product-model")
+const { Category } = require("../models/category-model")
 
 router.route("/")
 .get(async (req, res) => {
@@ -29,7 +29,7 @@ router.route("/")
 
 router.param("id", async(req, res, next, id) => {
     try{
-      const category = await Product.findById(id);
+      const category = await Category.findById(id);
       if(!category) {
         return res.status(404).json({success: false, message: "could not find category"})
       }
