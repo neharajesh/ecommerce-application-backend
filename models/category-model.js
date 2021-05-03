@@ -12,14 +12,12 @@ const CategorySchema = new Schema({
         required: [true, "Description is required"]
     },
     product_list: [{
-        product_id: {
-            type: mongoose.Types.ObjectId,
-            ref: "Product",
-            required: [true, "Add products to list"]
-        }
+        type: Schema.Types.ObjectId,
+        ref: "Product",
+        required: [true, "Add products to list"]
     }]
 })
 
 const Category = mongoose.model("Category", CategorySchema)
 
-module.exports = { Category }
+module.exports =  { Category }
