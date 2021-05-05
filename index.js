@@ -22,6 +22,8 @@ app.use("/categories", categoryRouter);
 app.use("/offers", offersRouter);
 app.use("/cart", cartRouter);
 app.use("/wishlist", wishlistRouter);
+require("./routers/auth-router")(app);
+require("./routers/user-router")(app);
 
 app.get("/", (req, res) => {
   res.send("Home page")
