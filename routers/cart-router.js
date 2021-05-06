@@ -12,7 +12,7 @@ router.route("/")
         const cartItems = await Cart.find({})
         res.status(200).send(cartItems)
     } catch (err) {
-        res.status(404).json({success: false, message: "could not load cart items", errMessage: err.message})
+        res.status(200).json({success: false, message: "could not load cart items", errMessage: err.message})
     }    
 })
 .post(async (req, res) => {
@@ -22,7 +22,7 @@ router.route("/")
         const savedCartItem = await newCartItem.save()
         res.status(200).json({success: true, newCartItem: savedCartItem})
     } catch (err) {
-        res.status(404).json({success: false, message: "save cart items failed", errMessage: err.message})
+        res.status(200).json({success: false, message: "save cart items failed", errMessage: err.message})
     }
 })
 
@@ -30,12 +30,12 @@ router.param("id", async(req, res, next, id) => {
     try{
       const cartItems = await Cart.findById(id);
       if(!cartItems) {
-        return res.status(404).json({success: false, message: "could not find cart items"})
+        return res.status(200).json({success: false, message: "could not find cart items"})
       }
       req.cartItems = cartItems;
       next()
     } catch (err) {
-      res.status(400).json({success: false, message: "an error occurred while retrieving cart", errMessage: err.message})
+      res.status(200).json({success: false, message: "an error occurred while retrieving cart", errMessage: err.message})
     }
 })
   
@@ -54,7 +54,7 @@ router.route("/:id")
         cartItems = await cartItems.save();
         res.status(200).json({success: true, message: "cart updated", cartItems})
     } catch (err) {
-      res.status(500).json({success: false, message: "an error occurred", errMessage: err.message})
+      res.status(200).json({success: false, message: "an error occurred", errMessage: err.message})
     }
 })
 .delete(async (req, res) => {
@@ -63,7 +63,7 @@ router.route("/:id")
         await cartItems.remove()
         res.status(200).json({success: true, message: "cart successfully deleted"})
     } catch (err) {
-        res.status(404).json({success: false, message: "cart could not be deleted", errMessage: err.message})
+        res.status(200).json({success: false, message: "cart could not be deleted", errMessage: err.message})
     }
 })
 
@@ -71,12 +71,12 @@ router.param("userId", async(req, res, next, userId) => {
     try {
         const cartItems = await Cart.find({user_id: userId});
         if(!cartItems) {
-            return res.status(404).json({success: false, message: "could not retrieve cart"})
+            return res.status(200).json({success: false, message: "could not retrieve cart"})
         }
         req.cartItems = cartItems;
         next()
     } catch (err) {
-        res.status(400).json({success: false, message: "an error occurred while retrieving cart", errMessage: err.message})
+        res.status(200).json({success: false, message: "an error occurred while retrieving cart", errMessage: err.message})
     }
 })
 
